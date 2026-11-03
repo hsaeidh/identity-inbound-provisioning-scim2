@@ -44,6 +44,14 @@ jobs:
       - name: Generate coverage report
         run: mvn test jacoco:report
 
+      - name: Upload SCIM2 common OSGi bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: scim2-common-wso2-is-7.3.0
+          path: components/org.wso2.carbon.identity.scim2.common/target/org.wso2.carbon.identity.scim2.common-3.6.17.jar
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
         with:
