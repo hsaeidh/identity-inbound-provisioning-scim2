@@ -117,6 +117,7 @@ import org.wso2.charon3.core.utils.ResourceManagerUtil;
 import org.wso2.charon3.core.utils.codeutils.ExpressionNode;
 import org.wso2.charon3.core.utils.codeutils.FilterTreeManager;
 import org.wso2.charon3.core.utils.codeutils.Node;
+import org.wso2.charon3.core.utils.codeutils.PatchOperation;
 import org.wso2.charon3.core.utils.codeutils.SearchRequest;
 import org.wso2.carbon.identity.configuration.mgt.core.model.Resource;
 import org.wso2.carbon.identity.unique.claim.mgt.constants.UniqueClaimConstants;
