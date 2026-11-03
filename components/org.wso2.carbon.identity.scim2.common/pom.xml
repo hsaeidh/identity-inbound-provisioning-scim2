@@ -160,10 +160,7 @@
             <groupId>org.wso2.carbon.identity.framework</groupId>
             <artifactId>org.wso2.carbon.identity.mgt</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon.identity.organization.management.core</groupId>
-            <artifactId>org.wso2.carbon.identity.organization.management.service</artifactId>
-        </dependency>
+        
         <dependency>
             <groupId>org.wso2.carbon.identity.event.handler.accountlock</groupId>
             <artifactId>org.wso2.carbon.identity.handler.event.account.lock</artifactId>
@@ -387,6 +384,19 @@
                             </rules>
                         </configuration>
                     </execution>
+                
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -408,14 +418,4 @@
                     </execution>
                     <execution>
                         <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
-</project>
+         
