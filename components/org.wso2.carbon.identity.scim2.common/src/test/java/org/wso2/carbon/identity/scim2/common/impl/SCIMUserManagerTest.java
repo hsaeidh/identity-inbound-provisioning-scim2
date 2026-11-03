@@ -461,6 +461,7 @@ public class SCIMUserManagerTest {
         when(mockedUserStoreManager.getSecondaryUserStoreManager(anyString())).thenReturn(mockedUserStoreManager);
         when(mockedUserStoreManager.getUserIDFromProperties(anyString(), anyString(), anyString()))
                 .thenReturn(memberId);
+        when(mockedUserStoreManager.isUserInRoleWithID(memberId, groupName)).thenReturn(false);
 
         Map<String, String> memberObject = new HashMap<>();
         memberObject.put(SCIMConstants.GroupSchemaConstants.DISPLAY, memberName);
@@ -477,6 +478,8 @@ public class SCIMUserManagerTest {
         SCIMUserManager scimUserManager = new SCIMUserManager(mockedUserStoreManager, mockedClaimManager);
         scimUserManager.patchGroup(groupId, groupName, patchOperations);
 
+        verify(mockedUserStoreManager).isUserInRoleWithID(memberId, groupName);
+        verify(mockedUserStoreManager, never()).getUserListOfRoleWithID(groupName);
         verify(mockedUserStoreManager).updateUserListOfRoleWithID(eq(groupName), any(), any());
         verify(mockedUserStoreManager, never()).updateGroupName(any(), any());
     }
