@@ -6,6 +6,8 @@
 name: PR Builder
 
 on:
+  push:
+    branches: [wso2-is-7.3.0-groups-fixes]
   pull_request:
     branches: [main, master, next]
   workflow_dispatch:
