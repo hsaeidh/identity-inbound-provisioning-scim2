@@ -3889,7 +3889,7 @@ public class SCIMUserManager implements UserManager {
 
             if (isNotEmpty(displayNameOperations)) {
                 newGroupName = (String) displayNameOperations.get(0).getValues();
-                setGroupDisplayName(groupId, currentGroupName, newGroupName);
+                newGroupName = setGroupDisplayName(groupId, currentGroupName, newGroupName);
             }
 
             Collections.sort(memberOperations);
@@ -4052,7 +4052,7 @@ public class SCIMUserManager implements UserManager {
         }
     }
 
-    private void setGroupDisplayName(String groupId, String oldGroupName, String newGroupName)
+    private String setGroupDisplayName(String groupId, String oldGroupName, String newGroupName)
             throws IdentityApplicationManagementException, CharonException, BadRequestException, IdentitySCIMException,
             UserStoreException {
 
@@ -4087,6 +4087,7 @@ public class SCIMUserManager implements UserManager {
             // Update group name in carbon UM.
             carbonUM.renameGroup(groupId, newGroupName);
         }
+        return newGroupName;
     }
 
     @Override
